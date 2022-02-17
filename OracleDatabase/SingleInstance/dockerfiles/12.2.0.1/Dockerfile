@@ -34,6 +34,9 @@ LABEL "provider"="Oracle"                                               \
       "port.listener"="1521"                                            \
       "port.oemexpress"="5500"
 
+# Argument to control removal of components not needed after db software installation
+ARG SLIMMING=true
+
 # Environment variables required for this build (do NOT change)
 # -------------------------------------------------------------
 ENV ORACLE_BASE=/opt/oracle \
@@ -46,6 +49,7 @@ ENV ORACLE_BASE=/opt/oracle \
     RUN_FILE="runOracle.sh" \
     START_FILE="startDB.sh" \
     CREATE_DB_FILE="createDB.sh" \
+    SLIMMING=$SLIMMING \
     SETUP_LINUX_FILE="setupLinuxEnv.sh" \
     CHECK_SPACE_FILE="checkSpace.sh" \
     CHECK_DB_FILE="checkDBStatus.sh" \
